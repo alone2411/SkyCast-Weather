@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A polished weather dashboard powered by OpenWeatherMap."
+    />
+    <title>SkyCast | Weather Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main class="page-shell">
+      <nav class="topbar" aria-label="Main navigation">
+        <a class="brand" href="#top" aria-label="SkyCast home">
+          <span class="brand-mark" aria-hidden="true">☁</span>
+          <span>Sky<span>Cast</span></span>
+        </a>
+
+        <p class="tagline">Live weather, beautifully simple.</p>
+
+        <button
+          id="unitToggle"
+          class="unit-toggle"
+          type="button"
+          aria-label="Switch temperature unit"
+        >
+          <span class="active">°C</span>
+          <span>°F</span>
+        </button>
+      </nav>
+
+      <section id="top" class="hero" aria-labelledby="pageTitle">
+        <div class="hero-copy">
+          <p class="eyebrow">YOUR PERSONAL WEATHER GUIDE</p>
+
+          <h1 id="pageTitle">Plan your day with <em>confidence.</em></h1>
+
+          <p class="intro">
+            Get current conditions, feels-like temperature, humidity, wind,
+            and more for any city in the world.
+          </p>
+        </div>
+
+        <form id="searchForm" class="search-box" novalidate>
+          <label class="sr-only" for="cityInput">Search for a city</label>
+
+          <span class="search-icon" aria-hidden="true">⌕</span>
+
+          <input
+            id="cityInput"
+            name="city"
+            type="search"
+            placeholder="Search a city..."
+            autocomplete="off"
+          />
+
+          <button type="submit">
+            Check weather <span aria-hidden="true">→</span>
+          </button>
+        </form>
+
+        <p id="formMessage" class="form-message" aria-live="polite">
+          Try “New Delhi”, “London”, or “Tokyo”.
+        </p>
+      </section>
+
+      <section class="weather-panel" aria-label="Current weather">
+        <div id="welcomeState" class="welcome-state">
+          <div class="welcome-icon" aria-hidden="true">☀</div>
+          <h2>Your forecast is waiting</h2>
+          <p>Enter a city above to see its live weather details.</p>
+        </div>
+
+        <div id="loadingState" class="loading-state" hidden aria-live="polite">
+          <span class="loader" aria-hidden="true"></span>
+          <p>Finding the latest conditions...</p>
+        </div>
+
+        <article id="weatherCard" class="weather-card" hidden>
+          <div class="weather-main">
+            <div>
+              <p id="weatherDate" class="weather-date"></p>
+              <h2 id="cityName">City, Country</h2>
+              <p id="weatherDescription" class="condition">Clear sky</p>
+            </div>
+
+            <div class="weather-icon-wrap">
+              <img id="weatherIcon" src="" alt="" />
+            </div>
+          </div>
+
+          <div class="temperature-row">
+            <p>
+              <span id="temperature" class="temperature">--</span>
+              <span id="unitSymbol">°C</span>
+            </p>
+
+            <p class="feels-like">
+              Feels like <strong id="feelsLike">--°</strong>
+            </p>
+          </div>
+
+          <div class="weather-details">
+            <div class="detail-item">
+              <span class="detail-icon" aria-hidden="true">💧</span>
+              <div>
+                <span class="detail-label">Humidity</span>
+                <strong id="humidity">--%</strong>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-icon" aria-hidden="true">↗</span>
+              <div>
+                <span class="detail-label">Wind speed</span>
+                <strong id="wind">-- km/h</strong>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-icon" aria-hidden="true">◉</span>
+              <div>
+                <span class="detail-label">Pressure</span>
+                <strong id="pressure">-- hPa</strong>
+              </div>
+            </div>
+
+            <div class="detail-item">
+              <span class="detail-icon" aria-hidden="true">◒</span>
+              <div>
+                <span class="detail-label">Visibility</span>
+                <strong id="visibility">-- km</strong>
+              </div>
+            </div>
+          </div>
+
+          <p class="updated">Updated just now · Powered by OpenWeather</p>
+        </article>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
